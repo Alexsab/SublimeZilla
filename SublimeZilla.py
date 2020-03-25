@@ -248,14 +248,14 @@ class SublimeZillaCommand(sublime_plugin.WindowCommand):
                 server_obj["password"] = ""
 
             LocalDir = server.getElementsByTagName('LocalDir')
-            if LocalDir[0].firstChild is not None:
+            if len(LocalDir) > 0 and LocalDir[0].firstChild is not None:
                 LocalDirVal = LocalDir[0].firstChild.nodeValue
                 server_obj["local_path"] = str(LocalDirVal)
             else:
                 server_obj["local_path"] = ""
 
             RemoteDir = server.getElementsByTagName('RemoteDir')
-            if RemoteDir[0].firstChild is not None:
+            if len(RemoteDir) > 0 and RemoteDir[0].firstChild is not None:
                 RemoteDirVal = RemoteDir[0].firstChild.nodeValue
                 server_obj["remote_path"] = self.convertRemoteDir(str(RemoteDirVal))
             else:
